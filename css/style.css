@@ -1,0 +1,215 @@
+:root {
+  /* Rose Pine Base (dark) */
+  --rose-pine-base: #191724;
+  --rose-pine-surface: #1f1d2e;
+  --rose-pine-overlay: #26233a;
+  --rose-pine-muted: #6e6a86;
+  --rose-pine-subtle: #908caa;
+  --rose-pine-text: #e0def4;
+  --rose-pine-love: #eb6f92;
+  --rose-pine-gold: #f6c177;
+  --rose-pine-rose: #ebbcba;
+  --rose-pine-pine: #31748f;
+  --rose-pine-foam: #9ccfd8;
+  --rose-pine-iris: #c4a7e7;
+  --rose-pine-highlight-low: #21202e;
+  --rose-pine-highlight-med: #403d52;
+  --rose-pine-highlight-high: #524f67;
+}
+
+.theme-dawn {
+  /* Rose Pine Dawn (light) */
+  --rose-pine-base: #faf4ed;
+  --rose-pine-surface: #fffaf3;
+  --rose-pine-overlay: #f2e9e1;
+  --rose-pine-muted: #9893a5;
+  --rose-pine-subtle: #797593;
+  --rose-pine-text: #4b4559;
+  --rose-pine-love: #b4637a;
+  --rose-pine-gold: #ea9d34;
+  --rose-pine-rose: #d7827e;
+  --rose-pine-pine: #286983;
+  --rose-pine-foam: #56949f;
+  --rose-pine-iris: #907aa9;
+  --rose-pine-highlight-low: #efecf4;
+  --rose-pine-highlight-med: #e0def4;
+  --rose-pine-highlight-high: #c6c1d1;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Container fade-in */
+.fade-in-content {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Theme switch toggle */
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  user-select: none;
+  margin-bottom: 1rem;
+}
+
+.theme-switch input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-switch .slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: var(--rose-pine-muted);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-switch .slider::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--rose-pine-surface);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.theme-switch input:checked + .slider {
+  background-color: var(--rose-pine-pine);
+}
+
+.theme-switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* Feature items: initial hidden state */
+.feature-item {
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  background-color: var(--rose-pine-overlay);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px var(--rose-pine-highlight-low);
+}
+
+.feature-item.fade-in-item {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.feature-item:hover {
+  transform: translateY(-4px);
+  background-color: var(--rose-pine-highlight-med);
+  box-shadow: 0 0 16px var(--rose-pine-highlight-high);
+  cursor: default;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* ========== Base Styles ========== */
+body {
+  background-color: var(--rose-pine-base);
+  color: var(--rose-pine-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 2rem;
+}
+
+.container {
+  background-color: var(--rose-pine-surface);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 20px var(--rose-pine-highlight-low);
+}
+
+h1 {
+  color: var(--rose-pine-foam);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  color: var(--rose-pine-gold);
+  margin-top: 2rem;
+}
+
+h3 {
+  color: var(--rose-pine-iris);
+}
+
+p {
+  color: var(--rose-pine-subtle);
+  line-height: 1.6;
+}
+
+/* ========== Features Grid ========== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  background-color: var(--rose-pine-overlay);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px var(--rose-pine-highlight-low);
+  transition: transform 0.2s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-4px);
+}
+
+/* ========== Button Link ========== */
+a.button-link {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--rose-pine-love);
+  color: var(--rose-pine-base);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 0 10px var(--rose-pine-highlight-low);
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+a.button-link:hover {
+  background-color: var(--rose-pine-rose);
+  transform: translateY(-2px);
+}
+
+/* ========== Footer ========== */
+.footer {
+  text-align: center;
+  color: var(--rose-pine-muted);
+  margin-top: 3rem;
+  padding: 1rem;
+}

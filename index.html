@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SysPilot - System Control on Your Local Network</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <label class="theme-switch" for="theme-toggle">
+      <input type="checkbox" id="theme-toggle" />
+      <span class="slider"></span>
+      <span class="label-text">Light Mode</span>
+    </label>
+    <div class="container">
+      <h1>🖥️ SysPilot: System Control on Your Local Network</h1>
+      <p>
+        SysPilot is a local web application designed to give you convenient and
+        secure control over your machine, directly from any device on your local
+        network. It transforms your browser into a powerful remote control for
+        key operating system operations, multimedia management, and basic
+        monitoring.
+      </p>
+      <p>
+        Built with Python (Flask) on the backend and a modern frontend interface
+        (HTML, CSS, JavaScript), SysPilot offers a lightweight and efficient
+        solution for <b>Linux users</b>.
+      </p>
+
+      <h2>How Does It Work?</h2>
+      <p>
+        SysPilot is installed as a service on your Linux machine. Once running,
+        it deploys a web interface that you can access via any web browser (on a
+        computer, tablet, or mobile phone) as long as you are connected to the
+        <b>same local network</b>.
+      </p>
+      <p>
+        You do not need an external internet connection or cloud services. All
+        control is performed privately and securely within your home or office
+        network.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>Power Control</h3>
+          <p>
+            Remotely shut down, restart, or lock your session with a single
+            click, without needing to be physically in front of your machine.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Multimedia Management</h3>
+          <p>
+            Control media playback (play/pause, next, previous) and adjust
+            system volume or mute it directly from the web.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Basic Monitoring</h3>
+          <p>
+            Get a quick overview of CPU and RAM usage, and your system's uptime,
+            keeping you informed about its status.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>User Administration</h3>
+          <p>
+            Manage users, roles, and permissions directly from the dashboard,
+            controlling who has access to which features.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Customizable Commands</h3>
+          <p>
+            Adapt system actions to your needs by configuring the shell commands
+            executed for each action.
+          </p>
+        </div>
+      </div>
+
+      <a
+        href="https://github.com/emirbruges/local-syspilot"
+        class="button-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        >View Project on GitHub</a
+      >
+    </div>
+    <footer class="footer">
+      <p>&copy; 2025 SysPilot. All rights reserved.</p>
+    </footer>
+    <script src="js/app.js"></script>
+  </body>
+</html>
