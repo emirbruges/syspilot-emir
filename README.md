@@ -20,7 +20,7 @@ This repository contains a simple demo of the web interface for **SysPilot**, a 
 
 ## How to use this demo
 
-You can visit this website by navigating to [https://emirbruges.github.io/syspilot](https://emirbruges.github.io/syspilot) in your web browser.
+You can visit this website by navigating to [https://emirbruges.github.io/syspilot-emir](https://emirbruges.github.io/syspilot-emir) in your web browser.
 
 ---
 
