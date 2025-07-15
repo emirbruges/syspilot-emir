@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Local SysPilot</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <header class="dashboard-header">
+        <h1>🖥️ Dashboard</h1>
+        <div class="theme-toggle-wrapper-inline">
+          <label class="theme-switch" title="Switch theme">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
+          <p class="theme-label">Switch theme</p>
+        </div>
+        <div class="header-info">
+          <span id="welcome-message"></span>
+          <button id="logout-button">Log Out</button>
+        </div>
+      </header>
+
+      <div id="page-notification" class="page-notification"></div>
+
+      <main class="controls-grid">
+        <div class="control-card">
+          <h2>🔌 Energy Control</h2>
+          <button class="action-button shutdown">Shutdown</button>
+          <button class="action-button restart">Reboot</button>
+          <button class="action-button lock">Lock Session</button>
+        </div>
+
+        <div class="control-card">
+          <h2>🎛️ Multimedia Control</h2>
+          <div class="media-buttons-row">
+            <button class="action-button media-previous">⏮️ Previous</button>
+            <button class="action-button play-pause">▶️ Play/Pause</button>
+            <button class="action-button media-next">⏭️ Next</button>
+          </div>
+          <div class="volume-control">
+            <span>🔉</span>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              id="volume-slider"
+            />
+            <span id="volume-percentage">50%</span>
+            <span>🔊</span>
+          </div>
+          <button class="action-button volume-mute" id="volume-mute-button">
+            🔇 Mute
+          </button>
+        </div>
+
+        <div class="control-card">
+          <h2>📊 System Metrics</h2>
+          <p>CPU Usage: <span id="cpu-usage">Loading...</span></p>
+          <p>RAM Usage: <span id="ram-usage">Loading...</span></p>
+          <p>Uptime: <span id="uptime">Loading...</span></p>
+        </div>
+
+        <div class="control-card" id="manage-users-card">
+          <h2>👥 User Management</h2>
+          <button id="manage-users-button" class="action-button">
+            Manage Users
+          </button>
+        </div>
+
+        <div class="control-card" id="custom-commands-card">
+          <h2>⌨️ Custom Commands</h2>
+          <button id="manage-custom-commands-button" class="action-button">
+            Manage Commands
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <div id="user-management-modal" class="modal">
+      <div class="modal-content large-modal-content">
+        <span class="close-button">&times;</span>
+        <h2>User Management</h2>
+        <div class="modal-tabs">
+          <button class="modal-tab-button active" data-tab="list">
+            User List
+          </button>
+          <button class="modal-tab-button" data-tab="add">Add User</button>
+        </div>
+
+        <div id="list-tab" class="tab-content active">
+          <h3>Current Users</h3>
+          <p id="no-users-message" style="text-align: center; display: none">
+            No users found.
+          </p>
+          <div class="table-container">
+            <table id="users-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Permissions</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="add-tab" class="tab-content">
+          <h3>Add New User</h3>
+          <form id="add-user-form">
+            <div class="form-group">
+              <label for="new-username">Username:</label>
+              <input type="text" id="new-username" name="username" required />
+            </div>
+            <div class="form-group">
+              <label for="new-password">Password:</label>
+              <input
+                type="password"
+                id="new-password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Permissions:</label>
+              <div
+                id="add-permissions-checkboxes"
+                class="permissions-checkboxes"
+              ></div>
+            </div>
+            <button type="submit">Add User</button>
+            <p id="add-user-error-message" class="error-message"></p>
+          </form>
+        </div>
+
+        <div id="edit-user-modal" class="modal nested-modal">
+          <div class="modal-content small-modal-content">
+            <span class="close-button-nested">&times;</span>
+            <h3 id="edit-username-title">Edit User</h3>
+            <form id="edit-user-form">
+              <input type="hidden" id="edit-user-id" />
+              <div class="form-group">
+                <label>Permissions:</label>
+                <div
+                  id="edit-permissions-checkboxes"
+                  class="permissions-checkboxes"
+                ></div>
+              </div>
+              <button type="submit">Save Changes</button>
+              <p id="edit-user-error-message" class="error-message"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="custom-commands-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Linux Custom Command Management</h2>
+        <p>
+          Here you can define the shell commands executed for each system
+          action. Use with caution!
+        </p>
+
+        <div id="command-list"></div>
+
+        <button id="save-commands-button">Save All Commands</button>
+        <p id="command-message" class="error-message"></p>
+        <button id="reset-commands-button" class="reset-button">
+          Reset to Defaults
+        </button>
+      </div>
+    </div>
+
+    <div id="custom-alert-modal" class="modal">
+      <div class="modal-content small-modal-content">
+        <span class="close-button-alert">&times;</span>
+        <p id="custom-alert-message"></p>
+        <button id="custom-alert-ok-button">OK</button>
+      </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/dashboard-theme.js"></script>
+  </body>
+</html>

@@ -1,0 +1,788 @@
+:root {
+  /* Rose Pine Colors */
+  --rose-pine-base: #191724;
+  --rose-pine-surface: #1f1d2e;
+  --rose-pine-overlay: #26233a;
+  --rose-pine-muted: #6e6a86;
+  --rose-pine-subtle: #908caa;
+  --rose-pine-text: #e0def4;
+  --rose-pine-love: #eb6f92;
+  --rose-pine-gold: #f6c177;
+  --rose-pine-rose: #ebbcba;
+  --rose-pine-pine: #31748f;
+  --rose-pine-foam: #9ccfd8;
+  --rose-pine-iris: #c4a7e7;
+  --rose-pine-highlight-low: #21202e;
+  --rose-pine-highlight-med: #403d52;
+  --rose-pine-highlight-high: #524f67;
+}
+
+:root.light-theme {
+  --rose-pine-base: #faf4ed;
+  --rose-pine-surface: #fffaf3;
+  --rose-pine-overlay: #f2e9e1;
+  --rose-pine-muted: #9893a5;
+  --rose-pine-subtle: #797593;
+  --rose-pine-text: #575279;
+  --rose-pine-love: #b4637a;
+  --rose-pine-gold: #ea9d34;
+  --rose-pine-rose: #d7827e;
+  --rose-pine-pine: #286983;
+  --rose-pine-foam: #56949f;
+  --rose-pine-iris: #907aa9;
+  --rose-pine-highlight-low: #f4ede8;
+  --rose-pine-highlight-med: #dfdad9;
+  --rose-pine-highlight-high: #cecacd;
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--rose-pine-base);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: var(--rose-pine-text);
+  padding: 10px; /* para que no pegue en los bordes en móviles */
+  box-sizing: border-box;
+}
+
+.login-container {
+  background-color: var(--rose-pine-surface);
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 360px;
+  max-width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--rose-pine-text);
+}
+
+p {
+  color: var(--rose-pine-subtle);
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--rose-pine-text);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--rose-pine-highlight-med);
+  background-color: var(--rose-pine-overlay);
+  color: var(--rose-pine-text);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--rose-pine-iris);
+  color: var(--rose-pine-base);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #a788d8;
+}
+
+/* Estilos para botones deshabilitados */
+button:disabled,
+.action-button:disabled {
+  background-color: var(
+    --rose-pine-highlight-med
+  ); /* Un color de fondo más apagado */
+  color: var(--rose-pine-subtle); /* Texto más apagado */
+  cursor: not-allowed; /* Cursor de "no permitido" */
+  opacity: 0.7; /* Ligeramente transparente */
+  border-color: var(--rose-pine-highlight-high); /* Borde más oscuro */
+  box-shadow: none; /* Eliminar cualquier sombra para que no se vean "elevados" */
+}
+
+/* Estilo específico para el botón de apagado cuando está deshabilitado */
+.action-button.shutdown:disabled {
+  background-color: var(
+    --rose-pine-overlay
+  ); /* Un color que indique inactividad */
+  border-color: var(--rose-pine-muted);
+  color: var(--rose-pine-muted);
+}
+
+.error-message {
+  color: var(--rose-pine-love);
+  margin-top: 15px;
+  min-height: 1em; /* Maintain minimum height for consistent layout even if empty */
+}
+
+.dashboard-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--rose-pine-surface);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--rose-pine-text);
+  box-sizing: border-box;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rose-pine-highlight-med);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: var(--rose-pine-text);
+}
+
+#logout-button {
+  background-color: var(--rose-pine-love);
+  color: var(--rose-pine-base);
+}
+#logout-button:hover {
+  background-color: #d85c80;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* ajustado para móviles */
+  gap: 20px;
+}
+
+.control-card {
+  background-color: var(--rose-pine-overlay);
+  border: 1px solid var(--rose-pine-highlight-low);
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.control-card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--rose-pine-highlight-med);
+  padding-bottom: 10px;
+  color: var(--rose-pine-text);
+}
+
+/* NUEVOS ESTILOS PARA LA FILA DE BOTONES DE MEDIA */
+.media-buttons-row {
+  display: flex; /* Usar flexbox para alinear en una fila */
+  justify-content: space-between; /* Espaciar uniformemente los botones */
+  gap: 10px; /* Espacio entre los botones */
+  margin-bottom: 15px; /* Margen inferior para separar del control de volumen */
+}
+
+.media-buttons-row .action-button {
+  flex: 1; /* Para que los botones ocupen el mismo espacio disponible */
+  margin-bottom: 0; /* Eliminar el margen inferior individual de los botones */
+}
+
+/* Estilo para el botón de mute cuando está activo (muteado) */
+.action-button.active-mute {
+  background-color: var(
+    --rose-pine-gold
+  ); /* Un color que indique estado activo/muteado */
+  color: var(--rose-pine-base);
+  border-color: var(--rose-pine-gold);
+}
+
+.action-button.active-mute:hover:not(:disabled) {
+  background-color: #d8a85f; /* Color más oscuro al pasar el ratón */
+  border-color: #d8a85f;
+}
+
+.action-button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px; /* Ajustado para los botones individuales, pero sobrescrito por media-buttons-row */
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid var(--rose-pine-muted);
+  background-color: var(--rose-pine-surface);
+  color: var(--rose-pine-text);
+  transition:
+    background-color 0.2s,
+    opacity 0.2s,
+    border-color 0.2s; /* Añadir transición para suavidad */
+}
+.action-button:hover:not(:disabled) {
+  /* Aplicar hover solo si NO está deshabilitado */
+  background-color: var(--rose-pine-highlight-low);
+  border-color: var(--rose-pine-subtle);
+}
+.action-button.shutdown {
+  background-color: var(--rose-pine-love);
+  border-color: var(--rose-pine-love);
+  color: var(--rose-pine-base);
+}
+.action-button.shutdown:hover:not(:disabled) {
+  /* Aplicar hover solo si NO está deshabilitado */
+  background-color: #d85c80;
+  border-color: #d85c80;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px; /* Margen inferior para separar del botón de mute */
+}
+.volume-control input[type="range"] {
+  flex-grow: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--rose-pine-highlight-med);
+  border-radius: 5px;
+  height: 8px;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s; /* Transición para el slider */
+}
+.volume-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--rose-pine-pine);
+  border-radius: 50%;
+  cursor: grab;
+  margin-top: -6px;
+  transition: background-color 0.2s; /* Transición para el thumb */
+}
+.volume-control input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--rose-pine-pine);
+  border-radius: 50%;
+  cursor: grab;
+  transition: background-color 0.2s; /* Transición para el thumb */
+}
+
+/* Estilos para el slider deshabilitado */
+.volume-control input[type="range"]:disabled {
+  background: var(
+    --rose-pine-overlay
+  ); /* Fondo más oscuro cuando está deshabilitado */
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.volume-control input[type="range"]:disabled::-webkit-slider-thumb {
+  background: var(--rose-pine-subtle); /* Thumb más apagado */
+  cursor: not-allowed;
+}
+
+.volume-control input[type="range"]:disabled::-moz-range-thumb {
+  background: var(--rose-pine-subtle); /* Thumb más apagado */
+  cursor: not-allowed;
+}
+
+/* ------------------------- */
+/* Estilos para el Modal Pop-up */
+/* ------------------------- */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Permanece en su lugar */
+  z-index: 1; /* Por encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilitar scroll si es necesario (para el modal en sí) */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
+  justify-content: center; /* Centrar contenido */
+  align-items: center; /* Centrar contenido */
+}
+
+.modal-content {
+  background-color: var(--rose-pine-surface);
+  margin: auto; /* Margen automático para centrar horizontalmente */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  position: relative;
+  max-width: 700px; /* Ancho máximo para el modal */
+  width: 90%; /* Ancho responsivo */
+  box-sizing: border-box;
+  animation: fadeIn 0.3s ease-out; /* Animación de entrada */
+}
+
+.modal-content.small-modal-content {
+  max-width: 400px; /* Para el modal de alerta/mensaje */
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-button,
+.close-button-nested,
+.close-button-alert {
+  color: var(--rose-pine-subtle);
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-button:hover,
+.close-button:focus,
+.close-button-nested:hover,
+.close-button-nested:focus,
+.close-button-alert:hover,
+.close-button-alert:focus {
+  color: var(--rose-pine-love);
+}
+
+.modal-content h2 {
+  color: var(--rose-pine-text);
+  border-bottom: 1px solid var(--rose-pine-highlight-med);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.modal-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--rose-pine-highlight-med);
+}
+
+.modal-tab-button {
+  background-color: var(--rose-pine-overlay);
+  color: var(--rose-pine-subtle);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  font-size: 1em;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  margin-right: 5px;
+  width: auto; /* Ancho automático para los botones de tab */
+}
+
+.modal-tab-button.active {
+  background-color: var(--rose-pine-iris);
+  color: var(--rose-pine-base);
+  font-weight: bold;
+  border-bottom: 1px solid var(--rose-pine-iris); /* Para un efecto de selección */
+}
+
+.modal-tab-button:hover:not(.active) {
+  background-color: var(--rose-pine-highlight-high);
+  color: var(--rose-pine-text);
+}
+
+.tab-content {
+  display: none;
+  padding: 15px 0;
+  /* --- IMPORTANTE: Añadir desplazamiento horizontal para la tabla --- */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h3 {
+  color: var(--rose-pine-text);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Tabla de usuarios */
+#users-table {
+  width: 100%; /* La tabla ahora intentará ocupar todo el ancho de su contenedor */
+  min-width: 500px; /* Establecer un ancho mínimo para la tabla si es necesario, ajusta este valor */
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#users-table th,
+#users-table td {
+  border: 1px solid var(--rose-pine-highlight-low);
+  padding: 10px;
+  text-align: left;
+}
+
+#users-table th {
+  background-color: var(--rose-pine-overlay);
+  color: var(--rose-pine-text);
+  font-weight: bold;
+}
+
+#users-table tbody tr:nth-child(even) {
+  background-color: var(--rose-pine-highlight-low);
+}
+
+#users-table tbody tr:hover {
+  background-color: var(--rose-pine-highlight-med);
+}
+
+#users-table .action-buttons-cell {
+  white-space: nowrap; /* Evitar que los botones de acción se rompan en varias líneas */
+}
+
+#users-table .action-buttons-cell button {
+  width: auto; /* Permitir que los botones de tabla tengan ancho automático */
+  padding: 5px 10px;
+  margin-left: 5px;
+  font-size: 0.85em; /* Ajuste el tamaño de la fuente para que quepa mejor */
+  display: inline-block; /* Para que estén en la misma línea */
+}
+
+#users-table .edit-button {
+  background-color: var(--rose-pine-pine);
+  color: var(--rose-pine-base);
+}
+#users-table .edit-button:hover {
+  background-color: #2a617a;
+}
+
+#users-table .delete-button {
+  background-color: var(--rose-pine-love);
+  color: var(--rose-pine-base);
+}
+#users-table .delete-button:hover {
+  background-color: #d85c80;
+}
+
+/* Checkboxes de permisos */
+.permissions-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.permissions-checkboxes div {
+  display: flex;
+  align-items: center;
+  background-color: var(--rose-pine-highlight-low);
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.permissions-checkboxes input[type="checkbox"] {
+  margin-right: 8px;
+  width: auto;
+  accent-color: var(--rose-pine-iris); /* Color del checkbox al seleccionarse */
+}
+
+.permissions-checkboxes label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+/* Estilos para el modal anidado (editar usuario) */
+.nested-modal {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Fondo más oscuro para el modal anidado */
+  z-index: 2; /* Por encima del modal principal */
+}
+
+.nested-modal-content {
+  background-color: var(--rose-pine-overlay);
+  border: 1px solid var(--rose-pine-highlight-high);
+}
+
+/* NUEVOS ESTILOS PARA EL MODAL DE COMANDOS */
+#command-list .command-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: var(--rose-pine-highlight-low);
+  border-radius: 6px;
+  border: 1px solid var(--rose-pine-highlight-med);
+}
+
+#command-list .command-item label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--rose-pine-text);
+}
+
+#command-list .command-item input[type="text"] {
+  width: calc(100% - 20px); /* Ajustar por padding */
+  padding: 8px 10px;
+  border: 1px solid var(--rose-pine-muted);
+  background-color: var(--rose-pine-overlay);
+  color: var(--rose-pine-text);
+  border-radius: 4px;
+  font-family: monospace; /* Fuente monoespaciada para comandos */
+}
+
+/* NEW STYLES FOR BUTTON SEPARATION AND MESSAGE HIDING */
+#save-commands-button {
+  margin-top: 5px; /* Increased separation from command-list */
+}
+
+#reset-commands-button {
+  background-color: var(
+    --rose-pine-gold
+  ); /* A different color for the reset button */
+  color: var(--rose-pine-base);
+  margin-top: 20px; /* Separation from command-message */
+}
+
+#reset-commands-button:hover {
+  background-color: #d8a85f; /* Darker color on hover */
+}
+
+#command-message {
+  display: none; /* Hidden by default, JavaScript will show it when needed */
+  margin-top: 15px; /* Separation from save-commands-button */
+  text-align: center; /* Keep text centered */
+}
+
+/* --- NEW: In-page Notification Styles --- */
+.page-notification {
+  position: fixed; /* Fixed position relative to the viewport */
+  top: 20px; /* 20px from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for exact centering */
+  background-color: var(--rose-pine-overlay); /* Default background */
+  color: var(--rose-pine-text); /* Default text color */
+  padding: 12px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* High z-index to be on top */
+  opacity: 0; /* Hidden by default */
+  visibility: hidden; /* Hidden for accessibility until shown */
+  transition:
+    opacity 0.4s ease-out,
+    visibility 0.4s ease-out,
+    transform 0.4s ease-out;
+  max-width: 90%; /* Max width for responsiveness */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.page-notification.show {
+  opacity: 1; /* Fade in */
+  visibility: visible; /* Make visible */
+  transform: translateX(-50%) translateY(0); /* Slide down slightly */
+}
+
+/* Notification types */
+.page-notification.success {
+  background-color: var(--rose-pine-pine); /* Greenish-blue for success */
+  color: var(--rose-pine-base);
+}
+
+.page-notification.error {
+  background-color: var(--rose-pine-love); /* Reddish for error */
+  color: var(--rose-pine-base);
+}
+
+.page-notification.info {
+  background-color: var(--rose-pine-iris); /* Purplish for info */
+  color: var(--rose-pine-base);
+}
+
+/* ------------------------- */
+/* Media Queries para móviles */
+/* ------------------------- */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95%; /* Más ancho en móviles */
+    padding: 20px;
+  }
+  .modal-tab-button {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+  #users-table th,
+  #users-table td {
+    padding: 8px;
+    font-size: 0.8em; /* Mantenemos el tamaño de fuente más pequeño que encontraste útil */
+  }
+  .permissions-checkboxes {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+  }
+
+  .page-notification {
+    top: 10px; /* Slightly higher on smaller screens */
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    height: auto; /* para que no quede forzado en altura en móvil */
+    padding: 15px;
+  }
+
+  .login-container {
+    padding: 30px 20px;
+    width: 100%; /* ocupa todo el ancho posible */
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .controls-grid {
+    grid-template-columns: 1fr; /* una columna para móviles */
+  }
+
+  .control-card {
+    padding: 15px;
+  }
+
+  .action-button {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+  .media-buttons-row {
+    /* NUEVO: para móviles, los botones de media pueden volver a apilarse si es necesario */
+    flex-direction: column;
+  }
+
+  .volume-control {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+* {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--rose-pine-muted);
+  border-radius: 34px;
+  transition: background-color 0.3s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--rose-pine-base);
+  transition: transform 0.3s;
+  border-radius: 50%;
+}
+
+.theme-switch input:checked + .slider {
+  background-color: var(--rose-pine-iris);
+}
+
+.theme-switch input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+.theme-toggle-wrapper {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100; /* encima de todo */
+}
+
+.theme-toggle-wrapper-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.theme-label {
+  margin: 0;
+  font-size: 14px;
+  color: var(--rose-pine-text);
+  user-select: none;
+}
